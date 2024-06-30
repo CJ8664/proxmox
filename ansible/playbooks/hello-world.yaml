@@ -3,6 +3,7 @@
 - name: Echo 
   hosts: all
   connection: local
+  become: true
 
   tasks:
   - name: Print debug message

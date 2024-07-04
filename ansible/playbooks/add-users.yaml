@@ -1,5 +1,5 @@
 ---
-- name: Add users
+- name: "Add users"
   hosts: all
   become: true
 

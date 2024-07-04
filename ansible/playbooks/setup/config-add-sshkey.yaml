@@ -9,3 +9,11 @@
         user: ansible
         state: present
         key: "/home/ansible/.ssh/id_ed25519.pub"
+
+    - name: Change sudoers file
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%sudo'
+        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %s

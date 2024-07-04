@@ -26,11 +26,25 @@ export PASS='$6$lz64qob6oH4Ongcz$jGz20QjmcJEZiOAJkb0JmVUiB5EkjLTAlXrlQZXi1KbUiGZ
 export NEWUSER='csjain'
 useradd -m -p $PASS $NEWUSER
 
-# Add the user to sudo group
+# Remove ansible user
+getent passwd 'ansible' > /dev/null
+if [ $? -eq 0 ]; then
+    userdel -r -f 'ansible'
+fi
+
+# Add ansible user
+# The string is created by running `openssl passwd -6 <password>`
+export PASS='$6$pyGyOae1t4CtG2/j$ZxIXAiiEsfTJABK19NWUnvGd6u399PCoz5zpc9mI88vR7W8UsUq9F/8t1B4.qKQi24gQreigGemYYybcL77Wh.'
+export NEWUSER='ansible'
+useradd -m -p $PASS $NEWUSER
+
+# Add the users to sudo group
 adduser csjain sudo
+adduser ansible sudo
 
 # Change the default shell to ZSH
 chsh -s $(which zsh) csjain
+chsh -s $(which zsh) ansible
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<< y

@@ -8,16 +8,16 @@
     ansible_password: $6$pyGyOae1t4CtG2/j$ZxIXAiiEsfTJABK19NWUnvGd6u399PCoz5zpc9mI88vR7W8UsUq9F/8t1B4.qKQi24gQreigGemYYybcL77Wh.
 
   tasks:
-    - name: Add csjain user
-      ansible.builtin.user:
-        name: csjain
-        shell: /bin/zsh
-        groups: sudo
-        password: "{{csjain_password}}"
+  - name: Add csjain user
+    ansible.builtin.user:
+      name: csjain
+      shell: /bin/zsh
+      groups: sudo
+      password: "{{csjain_password}}"
 
-    - name: Add ansible user
-      ansible.builtin.user:
-        name: csjain
-        shell: /bin/zsh
-        groups: sudo
-        password: "{{ansible_password}}"
+  - name: Add ansible user
+    ansible.builtin.user:
+      name: csjain
+      shell: /bin/zsh
+      groups: sudo
+      password: "{{ansible_password}}"

@@ -1,0 +1,5 @@
+# 1. Create users, especailly ansible, for task #2
+- import_tasks: "add-users.yaml"
+
+# 2. Copy ansible SSH key so that we can login and run tasks
+- import_tasks: "add-sshkey.yaml"

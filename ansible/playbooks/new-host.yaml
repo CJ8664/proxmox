@@ -1,5 +1,11 @@
-# 1. Create users, especailly ansible, for task #2
-- import_tasks: "add-users.yaml"
+---
+- name: New host setup
+  hosts: all
+  become: true
 
-# 2. Copy ansible SSH key so that we can login and run tasks
-- import_tasks: "add-sshkey.yaml"
+  tasks:
+  - name: "1. Create users, especailly ansible, for task #2"
+      ansible.builtin.import_tasks: add-users.yaml
+
+  - name: "2. Copy ansible SSH key so that we can login and run tasks"
+      ansible.builtin.import_tasks: add-sshkey.yaml

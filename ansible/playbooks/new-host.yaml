@@ -1,11 +1,6 @@
 ---
-- name: New host setup
-  hosts: all
-  become: true
+- name: "1. Create users, especailly ansible, for task #2"
+  ansible.builtin.import_playbook: add-users.yaml
 
-  tasks:
-  - name: "1. Create users, especailly ansible, for task #2"
-    ansible.builtin.import_tasks: add-users.yaml
-
-  - name: "2. Copy ansible SSH key so that we can login and run tasks"
-    ansible.builtin.import_tasks: add-sshkey.yaml
+- name: "2. Copy ansible SSH key so that we can login and run tasks"
+  ansible.builtin.import_playbook: add-sshkey.yaml

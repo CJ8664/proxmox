@@ -17,7 +17,7 @@
 
     - name: Add ansible user
       ansible.builtin.user:
-        name: csjain
+        name: ansible
         shell: /bin/zsh
         groups: sudo
         password: "{{ansible_password}}"

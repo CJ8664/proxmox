@@ -19,3 +19,6 @@
         - zsh
         - unattended-upgrades
       register: item
+
+- name: Install oh-my-zsh
+  ansible.builtin.import_playbook: install-essentials.yaml

@@ -4,3 +4,6 @@
 
 - name: "2. Copy ansible SSH key so that we can login and run tasks"
   ansible.builtin.import_playbook: add-sshkey.yaml
+
+- name: "3. Install essentials"
+  ansible.builtin.import_playbook: install-essentials.yaml

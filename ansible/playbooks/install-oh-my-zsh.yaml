@@ -12,15 +12,6 @@
         - ansible
       register: user_name
 
-    - name: Ensure zsh is the default shell
-      user:
-        name: "{{ user_name }}"
-        shell: "/usr/bin/zsh"
-      loop:
-        - csjain
-        - ansible
-      register: user_name
-
     - name: Download Oh My Zsh installation script
       get_url:
         url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh

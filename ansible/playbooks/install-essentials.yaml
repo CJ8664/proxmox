@@ -4,18 +4,18 @@
   become: true
 
   tasks:
-    - name: "Install package"
+    - name: "Install package {{ item }}"
       when: ansible_pkg_mgr == 'apt'
       ansible.builtin.apt:
         name: "{{ item }}"
         state: present
-        loop:
-          - git
-          - vim
-          - curl
-          - sudo
-          - dpkg
-          - wget
-          - zsh
-          - unattended-upgrades
-        register: item
+      loop:
+        - git
+        - vim
+        - curl
+        - sudo
+        - dpkg
+        - wget
+        - zsh
+        - unattended-upgrades
+      register: item

@@ -1,16 +1,16 @@
-- name: Add Ansible public ssh key
+- name: Install oh-my-zsh on the host
   hosts: all
   become: true
 
   tasks:
     - name: Ensure zsh is the default shell
       user:
-        name: "{{ user_name }}"
+        name: "{{ username }}"
         shell: "/usr/bin/zsh"
       loop:
         - csjain
         - ansible
-      register: user_name
+      register: username
 
     - name: Download Oh My Zsh installation script
       get_url:

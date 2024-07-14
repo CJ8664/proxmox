@@ -1,12 +1,15 @@
 ---
-- name: "1. Create users, especailly ansible, for task #2"
-  ansible.builtin.import_playbook: add-users.yaml
+- name: "1. Update the APT repositories"
+  ansible.builtin.import_playbook: upd-apt.yaml
 
-- name: "2. Copy ansible SSH key so that we can login and run tasks"
-  ansible.builtin.import_playbook: add-sshkey.yaml
-
-- name: "3. Install essential pkgs"
+- name: "2. Install essential pkgs"
   ansible.builtin.import_playbook: install-essentials.yaml
 
-- name: "4. Install oh-my-zsh"
+- name: "3. Install oh-my-zsh"
   ansible.builtin.import_playbook: install-oh-my-zsh.yaml
+
+- name: "4. Create users, especailly ansible"
+  ansible.builtin.import_playbook: add-users.yaml
+
+- name: "5. Copy ansible SSH key so that we can login and run tasks"
+  ansible.builtin.import_playbook: add-sshkey.yaml
